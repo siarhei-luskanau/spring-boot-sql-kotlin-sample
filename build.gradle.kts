@@ -22,6 +22,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.data:spring-data-jdbc")
+    implementation("org.apache.commons:commons-csv:1.11.0")
     implementation(libs.mysql.connector.java)
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
