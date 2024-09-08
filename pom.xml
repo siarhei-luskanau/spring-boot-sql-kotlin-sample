@@ -17,7 +17,7 @@
 		<commons.csv>1.11.0</commons.csv>
 		<java.version>17</java.version>
 		<kotlin.version>2.0.20</kotlin.version>
-		<mysql>8.0.33</mysql>
+		<mysql>9.0.0</mysql>
 	</properties>
 	<dependencies>
 		<dependency>
