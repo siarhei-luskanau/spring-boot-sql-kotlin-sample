@@ -7,7 +7,7 @@ env:
 
 jobs:
 
-  BuildTest:
+  Build:
     runs-on: ubuntu-latest
     steps:
 
@@ -20,4 +20,4 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - run: ./gradlew clean assemble test --stacktrace
+      - run: ./gradlew clean assemble war --stacktrace

@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJdbcRepositories
-public class TestJdbcConfiguration extends AbstractJdbcConfiguration {
+public class TaskJdbcConfiguration extends AbstractJdbcConfiguration {
 
     @Bean
     public NamedParameterJdbcTemplate namedParameterJdbcTemplate(JdbcOperations operations) {
