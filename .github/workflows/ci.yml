@@ -2,6 +2,9 @@ name: ci
 
 on: [ push ]
 
+env:
+  JAVA_VERSION: 21
+
 jobs:
 
   Build:
@@ -13,6 +16,8 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: 17
+          java-version: ${{ env.JAVA_VERSION }}
 
-      - run: mvn clean compile
+      - uses: gradle/actions/setup-gradle@v4
+
+      - run: ./gradlew clean assemble war --stacktrace

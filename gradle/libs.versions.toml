@@ -1,0 +1,17 @@
+[versions]
+apache-commons-csv = "1.12.0"
+java-languageVersion = "21"
+kotlin = "2.0.21"
+mysql = "9.1.0"
+spring-dependency-management = "1.1.6"
+springframework-boot = "3.3.3"
+
+[libraries]
+apache-commons-csv = { module = "org.apache.commons:commons-csv", version.ref = "apache-commons-csv" }
+mysql-connector-j = { module = "com.mysql:mysql-connector-j", version.ref = "mysql" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
+springframework-boot = { id = "org.springframework.boot", version.ref = "springframework-boot" }
