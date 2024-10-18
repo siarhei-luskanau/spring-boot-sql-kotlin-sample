@@ -4,7 +4,7 @@ java-languageVersion = "21"
 kotlin = "2.0.21"
 mysql = "9.1.0"
 spring-dependency-management = "1.1.6"
-springframework-boot = "3.3.3"
+springframework-boot = "3.3.4"
 
 [libraries]
 apache-commons-csv = { module = "org.apache.commons:commons-csv", version.ref = "apache-commons-csv" }
