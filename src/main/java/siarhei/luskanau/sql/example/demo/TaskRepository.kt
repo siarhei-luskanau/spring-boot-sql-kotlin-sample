@@ -53,10 +53,10 @@ SELECT
   T_LP_SCHEDULE.duedate,
   IFNULL(T_LP_SCHEDULE.principal_amount, 0) + IFNULL(T_LP_SCHEDULE.interest_amount, 0) AS payment_amount
 FROM `loan-schema`.`m_loan_repayment_schedule` AS T_LP_SCHEDULE
-WHERE T_LP_SCHEDULE.completed_derived = 0 AND T_LP_SCHEDULE.duedate IN (
+WHERE T_LP_SCHEDULE.completed_derived = FALSE AND T_LP_SCHEDULE.duedate IN (
   SELECT MIN(T_SUB.duedate)
   FROM `loan-schema`.`m_loan_repayment_schedule` AS T_SUB
-  WHERE T_SUB.completed_derived = 0
+  WHERE T_SUB.completed_derived = FALSE
   GROUP BY T_SUB.loan_id
 )
 ORDER BY T_LP_SCHEDULE.loan_id, T_LP_SCHEDULE.duedate

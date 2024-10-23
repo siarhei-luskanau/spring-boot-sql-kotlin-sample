@@ -25,13 +25,12 @@ allprojects {
 }
 
 dependencies {
-    implementation("org.apache.commons:commons-csv:1.12.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.data:spring-data-jdbc")
     implementation(libs.apache.commons.csv)
-    implementation(libs.mysql.connector.j)
+    implementation(libs.h2database)
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
 
