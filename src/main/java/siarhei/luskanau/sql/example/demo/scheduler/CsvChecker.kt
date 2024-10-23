@@ -10,10 +10,8 @@ import java.time.ZonedDateTime
 class CsvChecker(
     @Autowired private val csvReader: CsvReader,
     @Autowired private val schedulerAction: SchedulerAction,
-    @Value("\${scheduler.timezone}") private val timeZoneValue: String
+    @Value("\${scheduler.timezone}") private val timeZoneValue: String,
 ) {
-
-
     fun check() {
         val csvModelList = csvReader.read()
         println("List<ScvModel>: $csvModelList")
@@ -32,8 +30,8 @@ class CsvChecker(
         return csvModelList.filter { scvModel ->
             val timeString = scvModel.time.split(":")
             (scvModel.bitmask.toInt() shr currentTime.dayOfWeek.ordinal) % 2 == 1 &&
-                    timeString[0].toInt() == currentTime.hour &&
-                    timeString[1].toInt() == currentTime.minute
+                timeString[0].toInt() == currentTime.hour &&
+                timeString[1].toInt() == currentTime.minute
         }
     }
 }

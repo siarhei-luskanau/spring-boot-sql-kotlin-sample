@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class SchedulerAction {
-
     fun execute() {
         println("######## SchedulerAction.executed ########")
     }

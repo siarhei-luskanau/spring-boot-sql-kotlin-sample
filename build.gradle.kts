@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.plugin.spring)
-    alias(libs.plugins.springframework.boot)
     alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.springframework.boot)
     war
 }
 
@@ -11,10 +11,17 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(
-            libs.versions.java.languageVersion.get().toInt()
-        )
+        languageVersion =
+            JavaLanguageVersion.of(
+                libs.versions.java.languageVersion
+                    .get()
+                    .toInt(),
+            )
     }
+}
+
+allprojects {
+    apply(from = "$rootDir/ktlint.gradle")
 }
 
 dependencies {

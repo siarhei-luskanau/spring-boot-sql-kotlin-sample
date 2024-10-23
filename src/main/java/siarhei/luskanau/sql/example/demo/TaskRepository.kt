@@ -8,7 +8,6 @@ import siarhei.luskanau.sql.example.demo.model.TestModel2
 import siarhei.luskanau.sql.example.demo.model.TestModel3
 
 interface TaskRepository : Repository<TestModel1, Int> {
-
     @Query(
         """
 SELECT T_VEHICLE_MAKE.*, COUNT(T_LOAN.id) AS sold_count
@@ -21,12 +20,12 @@ WHERE T_LOAN.disbursedon_date >= :dateFrom
 GROUP BY T_VEHICLE_MAKE.id
 HAVING sold_count > :soldCount
 ORDER BY sold_count DESC
-        """
+        """,
     )
     fun task1a(
         @Param("dateFrom") dateFrom: String,
         @Param("dateTo") dateTo: String,
-        @Param("soldCount") soldCount: Int
+        @Param("soldCount") soldCount: Int,
     ): List<TestModel1>
 
     @Query(
@@ -40,11 +39,11 @@ FROM `loan-schema`.`m_loan` AS T_LOAN
   RIGHT JOIN `asset-schema`.`vehicle_make` AS T_VEHICLE_MAKE ON T_VEHICLE_MODEL.vehicle_make_id = T_VEHICLE_MAKE.id
 GROUP BY T_VEHICLE_MAKE.id
 ORDER BY sold_count DESC
-        """
+        """,
     )
     fun task1b(
         @Param("dateFrom") dateFrom: String,
-        @Param("dateTo") dateTo: String
+        @Param("dateTo") dateTo: String,
     ): List<TestModel1>
 
     @Query(
@@ -61,7 +60,7 @@ WHERE T_LP_SCHEDULE.completed_derived = 0 AND T_LP_SCHEDULE.duedate IN (
   GROUP BY T_SUB.loan_id
 )
 ORDER BY T_LP_SCHEDULE.loan_id, T_LP_SCHEDULE.duedate
-        """
+        """,
     )
     fun task2(): List<TestModel2>
 
@@ -82,7 +81,7 @@ FROM (
 ) as T_union
 GROUP BY T_union.loan_id
 ORDER BY T_union.loan_id
-        """
+        """,
     )
     fun task3(): List<TestModel3>
 }

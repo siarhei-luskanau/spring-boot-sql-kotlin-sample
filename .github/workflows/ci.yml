@@ -20,4 +20,4 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - run: ./gradlew clean assemble war --stacktrace
+      - run: ./gradlew clean ktlintCheck assemble war --stacktrace
