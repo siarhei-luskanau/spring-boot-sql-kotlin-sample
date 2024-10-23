@@ -3,6 +3,7 @@ apache-commons-csv = "1.12.0"
 h2database = "2.3.232"
 java-languageVersion = "21"
 kotlin = "2.0.21"
+kotlinx-serialization = "1.7.3"
 ktlint = "1.3.1"
 spring-dependency-management = "1.1.6"
 springframework-boot = "3.3.4"
@@ -10,10 +11,12 @@ springframework-boot = "3.3.4"
 [libraries]
 apache-commons-csv = { module = "org.apache.commons:commons-csv", version.ref = "apache-commons-csv" }
 h2database = { module = "com.h2database:h2", version.ref = "h2database" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 ktlint-cli = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
 springframework-boot = { id = "org.springframework.boot", version.ref = "springframework-boot" }

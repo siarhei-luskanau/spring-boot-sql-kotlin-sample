@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.plugin.spring)
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.springframework.boot)
     war
@@ -31,6 +32,7 @@ dependencies {
     implementation("org.springframework.data:spring-data-jdbc")
     implementation(libs.apache.commons.csv)
     implementation(libs.h2database)
+    implementation(libs.kotlinx.serialization.json)
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
 

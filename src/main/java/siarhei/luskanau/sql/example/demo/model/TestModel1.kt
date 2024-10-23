@@ -1,7 +1,11 @@
 package siarhei.luskanau.sql.example.demo.model
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class TestModel1(
-    val id: String,
-    val name: String?,
-    val sold_count: Int?,
+    @SerialName("id") val id: String,
+    @SerialName("name") val name: String?,
+    @SerialName("sold_count") val soldCount: Int?,
 )

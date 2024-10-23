@@ -1,7 +1,11 @@
 package siarhei.luskanau.sql.example.demo.model
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class TestModel2(
-    val loan_id: String,
-    val duedate: String?,
-    val payment_amount: Double?,
+    @SerialName("loan_id") val loanId: String,
+    @SerialName("duedate") val dueDate: String?,
+    @SerialName("payment_amount") val paymentAmount: Double?,
 )
