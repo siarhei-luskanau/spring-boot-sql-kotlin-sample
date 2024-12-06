@@ -4,7 +4,7 @@ h2database = "2.3.232"
 java-languageVersion = "21"
 kotlin = "2.1.0"
 kotlinx-serialization = "1.7.3"
-ktlint = "1.4.1"
+ktlint = "1.5.0"
 spring-dependency-management = "1.1.6"
 springframework-boot = "3.4.0"
 
