@@ -1,31 +1,34 @@
 package siarhei.luskanau.sql.example.demo.scheduler
 
 import org.apache.commons.csv.CSVFormat
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.io.InputStreamReader
 
 @Service
-class CsvReader {
-    fun read(): List<ScvModel> =
+class CsvReader(
+    @Autowired private val csvParser: CsvParser,
+) {
+    fun read(path: String): List<CsvModel> =
         Thread
             .currentThread()
             .contextClassLoader
-            .getResourceAsStream("scheduler.csv")
+            .getResourceAsStream(path)
             ?.use { inputStream ->
                 InputStreamReader(inputStream).use { reader ->
                     CSVFormat.RFC4180
                         .builder()
                         .setHeader()
                         .setSkipHeaderRecord(true)
-                        .build()
+                        .get()
                         .parse(reader)
                         ?.toList()
                         ?.map {
-                            ScvModel(
-                                time = requireNotNull(it.get("time")).trimIndent(),
-                                bitmask = requireNotNull(it.get("bitmask")).trimIndent(),
+                            csvParser.parse(
+                                time = requireNotNull(it.get("time")).trim(),
+                                bitmask = requireNotNull(it.get("bitmask")).trim(),
                             )
                         }
                 }
-            }.orEmpty()
+            } ?: throw CsvFileException(path)
 }

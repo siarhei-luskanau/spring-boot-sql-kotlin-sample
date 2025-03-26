@@ -22,8 +22,8 @@ class TaskRestController(
     @GetMapping(path = ["/task1b"]) // GET http://localhost:8080/task1b
     fun task1b(): List<TestModel1> =
         repository.task1b(
-            dateFrom = "2020-01-01",
-            dateTo = "2021-01-01",
+            dateFrom = "2019-01-01",
+            dateTo = "2023-01-01",
         )
 
     @GetMapping(path = ["/task2"]) // GET http://localhost:8080/task2

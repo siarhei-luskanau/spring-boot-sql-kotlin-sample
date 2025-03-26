@@ -1,18 +1,20 @@
 [versions]
 apache-commons-csv = "1.14.0"
-h2database = "2.3.232"
 java-languageVersion = "21"
 kotlin = "2.1.20"
 kotlinx-serialization = "1.8.0"
 ktlint = "1.5.0"
+mockito-kotlin = "5.4.0"
+mysql = "9.2.0"
 spring-dependency-management = "1.1.7"
 springframework-boot = "3.4.4"
 
 [libraries]
 apache-commons-csv = { module = "org.apache.commons:commons-csv", version.ref = "apache-commons-csv" }
-h2database = { module = "com.h2database:h2", version.ref = "h2database" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 ktlint-cli = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+mysql = { module = "com.mysql:mysql-connector-j", version.ref = "mysql" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
