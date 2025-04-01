@@ -53,12 +53,11 @@ SELECT
   T_LP_SCHEDULE.duedate,
   IFNULL(T_LP_SCHEDULE.principal_amount, 0) + IFNULL(T_LP_SCHEDULE.interest_amount, 0) AS payment_amount
 FROM `loan-schema`.`m_loan_repayment_schedule` AS T_LP_SCHEDULE
-WHERE T_LP_SCHEDULE.completed_derived = FALSE AND T_LP_SCHEDULE.duedate IN (
-  SELECT MIN(T_SUB.duedate)
-  FROM `loan-schema`.`m_loan_repayment_schedule` AS T_SUB
-  WHERE T_SUB.completed_derived = FALSE
-  GROUP BY T_SUB.loan_id
-)
+  LEFT JOIN `loan-schema`.m_loan_repayment_schedule AS T_2
+    ON T_LP_SCHEDULE.loan_id = T_2.loan_id
+      AND T_2.completed_derived = 0
+      AND T_2.duedate < T_LP_SCHEDULE.duedate
+WHERE T_LP_SCHEDULE.completed_derived = 0 AND T_2.loan_id IS NULL
 ORDER BY T_LP_SCHEDULE.loan_id, T_LP_SCHEDULE.duedate
         """,
     )
@@ -71,12 +70,14 @@ FROM (
   (
     SELECT
       T_LP_SCHEDULE.loan_id,
-      IFNULL(T_LP_SCHEDULE.principal_amount, 0) + IFNULL(T_LP_SCHEDULE.interest_amount, 0) AS current_balance
+        IFNULL(T_LP_SCHEDULE.principal_amount, 0) +
+        IFNULL(T_LP_SCHEDULE.interest_amount, 0) +
+        IFNULL(T_LP_SCHEDULE.fee_charges_amount, 0) +
+        IFNULL(T_LP_SCHEDULE.penalty_charges_amount, 0) AS current_balance
     FROM `loan-schema`.`m_loan_repayment_schedule` AS T_LP_SCHEDULE
   ) UNION (
-    SELECT T_transaction.loan_id, (-1 * SUM(T_transaction.amount)) AS current_balance
+    SELECT T_transaction.loan_id, T_transaction.amount * IF(T_transaction.is_reversed, 1, -1) AS current_balance
     FROM `loan-schema`.`m_loan_transaction` AS T_transaction
-    GROUP BY T_transaction.loan_id
   )
 ) as T_union
 GROUP BY T_union.loan_id

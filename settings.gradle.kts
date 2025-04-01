@@ -1,4 +1,4 @@
-rootProject.name = "spring-boot-sql-sample"
+rootProject.name = "spring-boot-sql-kotlin-sample"
 
 pluginManagement {
     repositories {

@@ -15,20 +15,23 @@ jobs:
 
   Build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    env:
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
     steps:
 
       - uses: actions/checkout@v4
+
+      - run: |
+          sudo systemctl start mysql.service
+          mysql -e 'CREATE DATABASE test;' -uroot -proot
 
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
 
-      - uses: gradle/actions/setup-gradle@v4
-
-      - run: ./gradlew clean ktlintCheck assemble war --stacktrace
+      - run: ./gradlew clean ktlintCheck assemble test war --stacktrace
 
       - run: ./gradlew wrapper --gradle-version latest --stacktrace
 
