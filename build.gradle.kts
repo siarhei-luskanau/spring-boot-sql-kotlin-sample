@@ -26,18 +26,23 @@ allprojects {
 }
 
 dependencies {
+    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    runtimeOnly("com.mysql:mysql-connector-j")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:mysql")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.data:spring-data-jdbc")
     implementation(libs.apache.commons.csv)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.mysql)
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(libs.mockito.kotlin)
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 kotlin {
