@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.springframework.boot)
-    war
 }
 
 group = "siarhei.luskanau.spring.bootsql.example"
@@ -26,16 +25,19 @@ allprojects {
 }
 
 dependencies {
+    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.data:spring-data-jdbc")
     implementation(libs.apache.commons.csv)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.mysql)
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:mysql")
     testImplementation(libs.mockito.kotlin)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
