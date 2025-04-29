@@ -18,6 +18,6 @@ class DemoApplicationTests {
     companion object {
         @Container
         @ServiceConnection
-        var mySQLContainer: MySQLContainer<*> = MySQLContainer(DockerImageName.parse("mysql:latest"))
+        var mySQLContainer: MySQLContainer<*> = MySQLContainer(DockerImageName.parse("mysql:9.2.0"))
     }
 }
