@@ -1,5 +1,5 @@
 [versions]
-apache-commons-csv = "1.14.0"
+apache-commons-csv = "1.14.1"
 java-languageVersion = "21"
 kotlin = "2.2.0"
 kotlinx-serialization = "1.9.0"
