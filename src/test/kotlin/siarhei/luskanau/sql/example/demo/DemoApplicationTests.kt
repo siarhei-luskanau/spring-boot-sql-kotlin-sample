@@ -2,9 +2,9 @@ package siarhei.luskanau.sql.example.demo
 
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection
-import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
+import org.testcontainers.mysql.MySQLContainer
 import org.testcontainers.utility.DockerImageName
 import kotlin.test.Test
 
@@ -18,6 +18,6 @@ class DemoApplicationTests {
     companion object {
         @Container
         @ServiceConnection
-        var mySQLContainer: MySQLContainer<*> = MySQLContainer(DockerImageName.parse("mysql:9.2.0"))
+        var mySQLContainer: MySQLContainer = MySQLContainer(DockerImageName.parse("mysql:9.2.0"))
     }
 }
