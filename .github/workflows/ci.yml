@@ -29,3 +29,5 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Ktlint format
+
+      - run: ./gradlew ktlintCheck detekt --stacktrace

@@ -13,6 +13,7 @@ class CsvParser {
     ): CsvModel {
         val localTime = LocalTime.parse(time, LOCAL_TIME_FORMATTER)
 
+        @Suppress("MagicNumber")
         val scheduleBitmask = bitmask.toByte(16)
         val dayOfWeekList =
             DayOfWeek.entries

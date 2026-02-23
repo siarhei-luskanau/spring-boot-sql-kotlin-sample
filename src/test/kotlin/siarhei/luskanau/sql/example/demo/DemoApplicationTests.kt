@@ -12,8 +12,7 @@ import kotlin.test.Test
 @SpringBootTest
 class DemoApplicationTests {
     @Test
-    fun contextLoads() {
-    }
+    fun contextLoads() = Unit
 
     companion object {
         @Container

@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.detekt)
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.plugin.spring)
     alias(libs.plugins.kotlinx.serialization)
@@ -22,6 +23,11 @@ java {
 
 allprojects {
     apply(from = "$rootDir/ktlint.gradle")
+    apply(plugin = "dev.detekt")
+    detekt {
+        parallel = true
+        ignoreFailures = false
+    }
 }
 
 dependencies {

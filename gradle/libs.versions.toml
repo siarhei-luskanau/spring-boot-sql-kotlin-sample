@@ -1,7 +1,8 @@
 [versions]
 apache-commons-csv = "1.14.1"
+detekt = "2.0.0-alpha.2"
 java-languageVersion = "21"
-kotlin = "2.3.10"
+kotlin = "2.3.0"
 kotlinx-serialization = "1.10.0"
 ktlint = "1.8.0"
 mockito-kotlin = "6.2.3"
@@ -17,6 +18,7 @@ mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "
 mysql = { module = "com.mysql:mysql-connector-j", version.ref = "mysql" }
 
 [plugins]
+detekt = { id = "dev.detekt", version.ref = "detekt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
