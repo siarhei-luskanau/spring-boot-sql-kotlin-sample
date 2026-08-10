@@ -1,6 +1,6 @@
 [versions]
 apache-commons-csv = "1.14.1"
-detekt = "2.0.0-alpha.5"
+detekt = "2.0.0-alpha.6"
 java-languageVersion = "21"
 kotlin = "2.4.10"
 kotlinx-serialization = "1.11.0"
